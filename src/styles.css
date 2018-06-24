@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body {
+    height: 98%;
+    margin: 0px;
+}
+
+/* Overriding mat-drawer-content */
+.mat-drawer-content {
+overflow: hidden !important;
+}
+
+.loader {
+    background: none repeat scroll 0 0 #00000045;
+    position: fixed;
+    display: block;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}

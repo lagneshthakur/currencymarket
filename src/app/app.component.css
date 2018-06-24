@@ -1,0 +1,33 @@
+  .fbc-container {
+      width: 100%;
+      height: 90%;
+    }
+  
+  .fbc-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .fbc-sidenav {
+    padding: 20px;
+    background-color: #063b51;
+    color: white;
+  }
+
+  .fbc-sidenav a {
+    text-decoration: none;
+    color: #FFF;
+  }
+
+  .fbc-menu {
+    background-color: #063b51;
+    width: 60px;
+    float: left;
+    height: 100%;
+  }
+
+  .fbc-menu-img{
+    margin-left: -5px
+  }
