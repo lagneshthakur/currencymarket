@@ -2,33 +2,104 @@ import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 // Angular Material
-import {MatButtonModule, MatCheckboxModule, MatSidenavModule, MatListModule,
-   MatCardModule, MatStepperModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCheckboxModule,
+  MatSidenavModule,
+  MatListModule,
+  MatCardModule,
+  MatStepperModule,
+  MatFormFieldModule,
+  MatToolbarModule,
+  MatInputModule,
+  MatProgressSpinnerModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatAutocompleteModule,
+  MatBadgeModule,
+  MatBottomSheetModule,
+  MatButtonToggleModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatProgressBarModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatTabsModule,
+  MatTooltipModule,
+  MatTreeModule,
+} from '@angular/material';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
-import { DashboardCardComponent } from './dashboard-card/dashboard-card.component';
-import { BoutiqueService } from './services/boutique.service';
+import { APIService } from './services/api.service';
 import { RouterModule } from '@angular/router';
-import { BoutiquesComponent } from './boutiques/boutiques.component';
-import { ContactsComponent } from './contacts/contacts.component';
-import { LoginComponent } from './login/login.component';
-import { AuthService } from './services/auth.service';
 import { HttpModule } from '@angular/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { AuthGuard } from './services/auth-guard.service';
 import { LoaderComponent } from './loader/loader.component';
-import { environment } from '../environments/environment.prod';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { TablePageComponent } from './table-page/table-page.component';
+import { CurrenciesCustomComponent } from './currencies/currencies.component';
+
+@NgModule({
+  exports: [
+    MatButtonModule,
+  MatCheckboxModule,
+  MatSidenavModule,
+  MatListModule,
+  MatCardModule,
+  MatStepperModule,
+  MatFormFieldModule,
+  MatToolbarModule,
+  MatInputModule,
+  MatProgressSpinnerModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatAutocompleteModule,
+  MatBadgeModule,
+  MatBottomSheetModule,
+  MatButtonToggleModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatProgressBarModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatTabsModule,
+  MatTooltipModule,
+  MatTreeModule
+  ]
+})
+export class CurrencyMatModule {}
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardCardComponent,
-    BoutiquesComponent,
-    ContactsComponent,
-    LoginComponent,
-    LoaderComponent
+    CurrenciesCustomComponent,
+    LoaderComponent,
+    TablePageComponent
   ],
   imports: [
     BrowserModule,
@@ -36,38 +107,24 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatSidenavModule,
-    MatListModule,
-    MatCardModule,
-    MatStepperModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatProgressSpinnerModule,
-    ServiceWorkerModule.register('./ngsw-worker.js', {enabled: environment.production}),
+    CurrencyMatModule,
+    ServiceWorkerModule.register('./ngsw-worker.js', {enabled: true}),
     RouterModule.forRoot([
       {
         path: '',
-        component: DashboardCardComponent
+        component: TablePageComponent
       },
       {
-        path: 'boutiques',
-        component: BoutiquesComponent,
-        canActivate: [AuthGuard]
+        path: 'currencies/:currency',
+        component: CurrenciesCustomComponent
       },
       {
-        path: 'contacts',
-        component: ContactsComponent,
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'login',
-        component: LoginComponent
-      },
+        path: 'table',
+        component: TablePageComponent
+      }
     ])
   ],
-  providers: [BoutiqueService, AuthService, JwtHelperService, AuthGuard],
+  providers: [APIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -25,9 +25,9 @@
       }
     }],
     "dataGroups": [{
-      "name": "boutiques-api",
+      "name": "currency-api",
       "urls": [
-        "/users"
+        "/ticker"
       ],
       "cacheConfig":{
         "strategy": "performance",

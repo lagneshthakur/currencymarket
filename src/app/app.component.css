@@ -1,33 +1,34 @@
-  .fbc-container {
+  .cma-container {
       width: 100%;
       height: 90%;
     }
   
-  .fbc-sidenav-content {
+  .cma-sidenav-content {
     display: flex;
     height: 100%;
     align-items: center;
     justify-content: center;
+    padding: 15px;
   }
   
-  .fbc-sidenav {
+  .cma-sidenav {
     padding: 20px;
     background-color: #063b51;
     color: white;
   }
 
-  .fbc-sidenav a {
+  .cma-sidenav a {
     text-decoration: none;
     color: #FFF;
   }
 
-  .fbc-menu {
+  .cma-menu {
     background-color: #063b51;
     width: 60px;
     float: left;
     height: 100%;
   }
 
-  .fbc-menu-img{
+  .cma-menu-img{
     margin-left: -5px
   }

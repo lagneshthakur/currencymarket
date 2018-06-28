@@ -1,37 +1,27 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<mat-toolbar color="primary">
   <h1 class="d-block d-sm-none">
     {{ title }}!
   </h1>
   <h1 class="d-none d-md-block">
     Welcome to {{ title }}!
   </h1>
-</div>
-<mat-drawer-container class="fbc-container" autosize>
-  <mat-drawer #drawer class="fbc-sidenav" mode="side">
-    <h2>Boutiques</h2>
+</mat-toolbar>
+<mat-drawer-container class="cma-container" autosize>
+  <mat-drawer #drawer class="cma-sidenav" mode="side">
+    <h2>Currency Pages</h2>
     <mat-list>
-      <mat-list-item> <a routerLink="/">Dashboard</a> </mat-list-item>
-      <mat-list-item> <a routerLink="/boutiques">Boutiques</a> </mat-list-item>
-      <mat-list-item> <a routerLink="/contacts">Contacts</a> </mat-list-item>
+      <mat-list-item> <a routerLink="/table">Table</a> </mat-list-item>
+      <mat-list-item> <a routerLink="/currency">Currency</a> </mat-list-item>
     </mat-list>
   </mat-drawer>
-  <mat-list class="fbc-menu">
+  <mat-list class="cma-menu">
     <mat-list-item class="d-none d-md-block"> <i class="material-icons md-36" (click)="drawer.toggle()" style="cursor: pointer; color: white">menu</i> </mat-list-item>
     <mat-list-item style="height: 17px;"> </mat-list-item>
-    <mat-list-item> <a routerLink="/"><img class="fbc-menu-img" src="../assets/icons/dashboard.png" /> </a></mat-list-item>
-    <mat-list-item> <a routerLink="/boutiques"><img class="fbc-menu-img" src="../assets/icons/boutique.png" /> </a></mat-list-item>
-    <mat-list-item> <a routerLink="/contacts"><img class="fbc-menu-img" src="../assets/icons/contact.png" /> </a></mat-list-item>
+    <mat-list-item> <a routerLink="/"><img class="cma-menu-img" src="../assets/icons/dashboard.png" /> </a></mat-list-item>
+    <mat-list-item> <a routerLink="/boutiques"><img class="cma-menu-img" src="../assets/icons/boutique.png" /> </a></mat-list-item>
   </mat-list>
-  <div class="fbc-sidenav-content" style="overflow: auto; display: block">
+  <div class="cma-sidenav-content" style="overflow: auto; display: block">
     <router-outlet></router-outlet>
   </div>
 </mat-drawer-container>
-<div style="position: fixed; bottom: 0; left: 47%;">
-  <!-- <span class="pull-right">Francesca's
-    <a href="" ui-scroll-to="app" class="m-l-sm text-muted">
-        <i class="material-icons md-36" style="cursor: pointer;">alarm</i>
-    </a>
-  </span> -->
-  2018 Copyright ©
-</div>
