@@ -1,3 +1,4 @@
+<app-loader *ngIf="loading"></app-loader>
 <mat-form-field>
   <mat-select [(value)]="currency" (selectionChange)="getTickers()">
     <mat-option value="INR">INR</mat-option>
@@ -5,7 +6,6 @@
     <mat-option value="USD">USD</mat-option>
   </mat-select>
 </mat-form-field>
-
 <mat-form-field>
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
 </mat-form-field>
