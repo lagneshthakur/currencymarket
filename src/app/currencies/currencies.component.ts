@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from '../services/api.service';
 import { ActivatedRoute } from '@angular/router';
+import {Location} from '@angular/common';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-currencies',
@@ -13,7 +15,8 @@ export class CurrenciesCustomComponent implements OnInit {
   public loading: boolean;
   public notes: string;
 
-  constructor(private apiService: APIService, private activeRoute: ActivatedRoute) { }
+  constructor(private apiService: APIService, private activeRoute: ActivatedRoute,
+     private _location: Location, public snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getSingleTicker(1);
@@ -31,12 +34,22 @@ export class CurrenciesCustomComponent implements OnInit {
   }
 
   onNoteSave(): void {
+    this.snackBar.open('Note Saved', 'Success', {
+      duration: 1000,
+    });
     localStorage.setItem(this.currencyName, this.notes);
     console.log('Note Saved');
   }
 
   onNoteClear(): void {
+    this.snackBar.open('Note Removed', 'Success', {
+      duration: 1000,
+    });
     localStorage.removeItem(this.currencyName);
     console.log('Note Cleared');
+  }
+
+  backClicked() {
+    this._location.back();
   }
 }

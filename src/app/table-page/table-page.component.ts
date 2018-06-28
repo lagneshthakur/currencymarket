@@ -8,7 +8,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
   styleUrls: ['./table-page.component.css']
 })
 export class TablePageComponent implements OnInit {
-  displayedColumns: string[] = ['rank', 'name', 'symbol', 'quotes'];
+  displayedColumns: string[] = ['rank', 'name', 'symbol', 'quotes', 'notes'];
   loading: boolean;
   currency = 'INR';
   dataSource: MatTableDataSource<any>;
@@ -41,6 +41,11 @@ export class TablePageComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  getNotes(currencyName){
+    debugger
+    return localStorage.getItem(currencyName);
   }
 
 
