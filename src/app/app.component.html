@@ -12,14 +12,14 @@
     <h2>Currency Pages</h2>
     <mat-list>
       <mat-list-item> <a routerLink="/table">Table</a> </mat-list-item>
-      <mat-list-item> <a routerLink="/currency">Currency</a> </mat-list-item>
+      <mat-list-item> <a routerLink="/currencies/Bitcoin">Currency</a> </mat-list-item>
     </mat-list>
   </mat-drawer>
   <mat-list class="cma-menu">
     <mat-list-item class="d-none d-md-block"> <i class="material-icons md-36" (click)="drawer.toggle()" style="cursor: pointer; color: white">menu</i> </mat-list-item>
     <mat-list-item style="height: 17px;"> </mat-list-item>
-    <mat-list-item> <a routerLink="/"><img class="cma-menu-img" src="../assets/icons/dashboard.png" /> </a></mat-list-item>
-    <mat-list-item> <a routerLink="/boutiques"><img class="cma-menu-img" src="../assets/icons/boutique.png" /> </a></mat-list-item>
+    <mat-list-item> <a routerLink="/table"><img class="cma-menu-img" src="../assets/icons/dashboard.png" /> </a></mat-list-item>
+    <mat-list-item> <a routerLink="/currencies/Bitcoin"><img class="cma-menu-img" src="../assets/icons/boutique.png" /> </a></mat-list-item>
   </mat-list>
   <div class="cma-sidenav-content" style="overflow: auto; display: block">
     <router-outlet></router-outlet>

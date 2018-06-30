@@ -9,7 +9,7 @@
 <mat-form-field>
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
 </mat-form-field>
-
+<mat-icon style="cursor: pointer;" (click)="getTickers()">refresh</mat-icon>
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort>
 
@@ -22,7 +22,7 @@
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-      <td mat-cell *matCellDef="let row"><a [routerLink]="['/currencies',row.name]">{{row.name}}</a></td>
+      <td mat-cell *matCellDef="let row"><a style="color: blue; cursor: pointer;" (click)="changeRoute('/currencies/'+row.name)">{{row.name}}</a></td>
     </ng-container>
 
     <!-- Symbol Column -->

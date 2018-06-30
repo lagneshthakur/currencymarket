@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { APIService } from '../services/api.service';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource, MatSnackBar} from '@angular/material';
+import { Router } from '@angular/router';
+import { TableService } from '../services/table.service';
 
 @Component({
   selector: 'app-table-page',
@@ -15,7 +17,10 @@ export class TablePageComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  constructor(private apiService: APIService) { }
+  constructor(private apiService: APIService, private router: Router,
+    private tableService: TableService, public snackBar: MatSnackBar) {
+    this.currency = this.tableService.filterValue == null ? 'INR' : this.tableService.filterValue;
+  }
 
   ngOnInit() {
     this.getTickers();
@@ -32,6 +37,12 @@ export class TablePageComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.loading = false;
+    }, error => {
+      console.log('Fetch Failed');
+      this.loading = false;
+      this.snackBar.open('Cannot get Data', 'Failed', {
+        duration: 1000,
+      });
     });
   }
 
@@ -43,9 +54,18 @@ export class TablePageComponent implements OnInit {
     }
   }
 
-  getNotes(currencyName){
-    debugger
+  getNotes(currencyName) {
     return localStorage.getItem(currencyName);
+  }
+
+  changeRoute(routeValue) {
+    const selectedCurrency = routeValue.split('/')[2];
+    const selectedCurrencyInfo = this.dataSource['_data']['_value'].find((currency) => {
+      return currency.name === selectedCurrency;
+    });
+    this.tableService.selectedCurrency = selectedCurrencyInfo;
+    this.tableService.filterValue = this.currency;
+    this.router.navigate([routeValue]);
   }
 
 

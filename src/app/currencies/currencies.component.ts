@@ -3,6 +3,7 @@ import { APIService } from '../services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import {Location} from '@angular/common';
 import {MatSnackBar} from '@angular/material';
+import { TableService } from '../services/table.service';
 
 @Component({
   selector: 'app-currencies',
@@ -14,14 +15,16 @@ export class CurrenciesCustomComponent implements OnInit {
   public currencyName: string;
   public loading: boolean;
   public notes: string;
+  public currencyInfo;
 
   constructor(private apiService: APIService, private activeRoute: ActivatedRoute,
-     private _location: Location, public snackBar: MatSnackBar) { }
+     private _location: Location, public snackBar: MatSnackBar, private tableService: TableService) { }
 
   ngOnInit(): void {
     this.getSingleTicker(1);
     this.currencyName = this.activeRoute.snapshot.params['currency'];
     this.notes = localStorage.getItem(this.currencyName);
+    this.currencyInfo = this.tableService.selectedCurrency;
     console.log(this.activeRoute.snapshot.params['currency']);
   }
 

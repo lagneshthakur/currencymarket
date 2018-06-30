@@ -12,9 +12,13 @@
             <img class="mat-card-image" style="border-radius: 100%; padding: 10px; width: calc(100% + 30px);" src="https://ui-avatars.com/api/?name={{currencyName}}&background=0D8ABC&color=fff" alt="">
           </div>
           <mat-card-title>Currency - {{currencyName}}</mat-card-title>
-          <!-- <mat-card-subtitle>{{ticker['quotes']['']}}</mat-card-subtitle> -->
+          <mat-card-subtitle>Rank - {{currencyInfo.rank}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
+          <mat-card-subtitle>Supplies</mat-card-subtitle>
+            <p>Total - {{currencyInfo.total_supply}}</p>
+            <p>Circulating - {{currencyInfo.circulating_supply}}</p>
+            <p>Max - {{currencyInfo.max_supply}}</p>
           <mat-form-field class="example-form-field">
               <input matInput type="text" placeholder="Notes" [(ngModel)]="notes">
               <button mat-button *ngIf="notes" matSuffix mat-icon-button aria-label="Clear" (click)="notes='';onNoteClear()">
